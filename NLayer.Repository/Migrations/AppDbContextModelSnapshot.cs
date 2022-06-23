@@ -17,7 +17,7 @@ namespace NLayer.Repository.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -43,26 +43,26 @@ namespace NLayer.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Giyim"
+                            Name = "Kalemler"
                         },
                         new
                         {
                             Id = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Elektronik"
+                            Name = "Kitaplar"
                         },
                         new
                         {
                             Id = 3,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Gıda"
+                            Name = "Defterler"
                         });
                 });
 
@@ -105,46 +105,46 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 6, 18, 0, 16, 15, 281, DateTimeKind.Local).AddTicks(7556),
-                            Name = "Polo yaka",
-                            Price = 999m,
-                            Stock = 100
+                            CreatedDate = new DateTime(2022, 1, 11, 0, 26, 55, 461, DateTimeKind.Local).AddTicks(2620),
+                            Name = "Kalem 1",
+                            Price = 100m,
+                            Stock = 20
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 6, 18, 0, 16, 15, 281, DateTimeKind.Local).AddTicks(7565),
-                            Name = "Iphone13",
-                            Price = 39999m,
-                            Stock = 100
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 1, 11, 0, 26, 55, 461, DateTimeKind.Local).AddTicks(2632),
+                            Name = "Kalem 2",
+                            Price = 200m,
+                            Stock = 30
                         },
                         new
                         {
                             Id = 3,
-                            CategoryId = 3,
-                            CreatedDate = new DateTime(2022, 6, 18, 0, 16, 15, 281, DateTimeKind.Local).AddTicks(7566),
-                            Name = "Sucuk",
-                            Price = 90m,
-                            Stock = 100
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 1, 11, 0, 26, 55, 461, DateTimeKind.Local).AddTicks(2633),
+                            Name = "Kalem 3",
+                            Price = 600m,
+                            Stock = 60
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 6, 18, 0, 16, 15, 281, DateTimeKind.Local).AddTicks(7568),
-                            Name = "Iphone13Pro",
-                            Price = 49500m,
-                            Stock = 100
+                            CreatedDate = new DateTime(2022, 1, 11, 0, 26, 55, 461, DateTimeKind.Local).AddTicks(2634),
+                            Name = "Kitap 1",
+                            Price = 600m,
+                            Stock = 60
                         },
                         new
                         {
                             Id = 5,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 6, 18, 0, 16, 15, 281, DateTimeKind.Local).AddTicks(7569),
-                            Name = "Gömlek",
-                            Price = 300m,
-                            Stock = 100
+                            CategoryId = 2,
+                            CreatedDate = new DateTime(2022, 1, 11, 0, 26, 55, 461, DateTimeKind.Local).AddTicks(2635),
+                            Name = "Kitap 2",
+                            Price = 6600m,
+                            Stock = 320
                         });
                 });
 
@@ -157,7 +157,6 @@ namespace NLayer.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Height")
@@ -181,17 +180,17 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = 1,
                             Color = "Kırmızı",
-                            Height = 80,
+                            Height = 100,
                             ProductId = 1,
-                            Width = 30
+                            Width = 200
                         },
                         new
                         {
                             Id = 2,
                             Color = "Mavi",
-                            Height = 14,
+                            Height = 300,
                             ProductId = 2,
-                            Width = 3
+                            Width = 500
                         });
                 });
 
@@ -224,8 +223,7 @@ namespace NLayer.Repository.Migrations
 
             modelBuilder.Entity("NLayer.Core.Product", b =>
                 {
-                    b.Navigation("ProductFeature")
-                        .IsRequired();
+                    b.Navigation("ProductFeature");
                 });
 #pragma warning restore 612, 618
         }
